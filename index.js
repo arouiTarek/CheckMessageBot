@@ -13,13 +13,13 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.post(`/api/webhook/bot${token}`, (req, res) => {
+app.post(`/api/webhook/`, (req, res) => {
     bot.processUpdate(req.body);
     res.sendStatus(200);
 });
 
 //register webhook
-bot.setWebHook(`${url}/bot${token}`)
+bot.setWebHook(`${url}`)
     .then(() => console.log('Webhook has been set up successfully'))
     .catch((err) => console.error('Webhook error', err));
 
@@ -48,6 +48,4 @@ bot.on('message', async (msg) => {
    // }
 });
 
-app.listen(port, () => {
-    console.log(`Server bot running ${port}`);
-});
+module.exports = app; // Export app for Vercel
