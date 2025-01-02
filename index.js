@@ -13,7 +13,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.post(`/bot${token}`, (req, res) => {
+app.post(`/api/webhook/bot${token}`, (req, res) => {
     bot.processUpdate(req.body);
     res.sendStatus(200);
 });
