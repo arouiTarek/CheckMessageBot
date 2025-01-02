@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const token = '7601448687:AAF2TnvkF--YyjO-3BJdK5vLLbMdEb-dwy0';
 const port = 3000; 
 //const url = 'https://ae40-41-104-95-220.ngrok-free.app'; 
-const url = 'https://check-message-bot.vercel.app'; 
+const url = 'https://check-message-bot.vercel.app/api/webhook'; 
 
 const bot = new TelegramBot(token);
 const app = express();
