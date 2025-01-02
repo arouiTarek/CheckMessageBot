@@ -29,7 +29,7 @@ bot.on('message', async (msg) => {
     //console.log(`The message received from ${msg.from.username || msg.from.first_name}`);
     //await bot.deleteMessage(chatId, msg.message_id);
     const chatMember = await bot.getChatMember(chatId, userId);
-    if (chatMember.status !== 'administrator' && chatMember.status !== 'creator') {
+   // if (chatMember.status !== 'administrator' && chatMember.status !== 'creator') {
         try {
             // Check if the message is a link, photo, video, or document
             if (
@@ -45,7 +45,7 @@ bot.on('message', async (msg) => {
         } catch (error) {
             console.error('Error:', error);
         }
-    }
+   // }
 });
 
 app.listen(port, () => {
