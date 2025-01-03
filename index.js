@@ -13,13 +13,13 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.post(`/api/webhook/`, (req, res) => {
+app.post(`/api/webhook/${token}`, (req, res) => {
     bot.processUpdate(req.body);
     res.sendStatus(200);
 });
 
 //register webhook
-bot.setWebHook(`${url}`)
+bot.setWebHook(`${url}/${token}`)
     .then(() => console.log('Webhook has been set up successfully'))
     .catch((err) => console.error('Webhook error', err));
 
