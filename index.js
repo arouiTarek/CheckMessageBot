@@ -20,7 +20,7 @@ app.post('/api/webhook', (req, res) => {
 bot.setWebHook(`${url}`)
     .then(() => console.log('Webhook has been set up successfully'))
     .catch((err) => console.error('Webhook error', err));
-
+const EXCLUDED_USERNAMES = ['GroupAnonymousBot']; 
 // Message handler
 bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
@@ -28,6 +28,12 @@ bot.on('message', async (msg) => {
 
     try {
         const chatMember = await bot.getChatMember(chatId, userId);
+
+        if (EXCLUDED_USERNAMES.includes(username)) {
+            console.log(`Message from ${username} was excluded from deletion.`);
+            return; // لا تحذف الرسالة
+        }
+
        if (chatMember.status !== 'administrator' && chatMember.status !== 'creator') {
             if (
                 (msg.text && /https?:\/\/\S+/i.test(msg.text)) || 
