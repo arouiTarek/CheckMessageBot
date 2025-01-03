@@ -48,4 +48,8 @@ bot.on('message', async (msg) => {
    // }
 });
 
-module.exports = app; // Export app for Vercel
+const PORT = 3000;
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+//module.exports = app;
+module.exports = app
