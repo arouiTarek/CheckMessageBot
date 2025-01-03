@@ -28,7 +28,7 @@ bot.on('message', async (msg) => {
 
     try {
         const chatMember = await bot.getChatMember(chatId, userId);
-//        if (chatMember.status !== 'administrator' && chatMember.status !== 'creator') {
+       if (chatMember.status !== 'administrator' && chatMember.status !== 'creator') {
             if (
                 (msg.text && /https?:\/\/\S+/i.test(msg.text)) || 
                 msg.photo || 
@@ -38,7 +38,7 @@ bot.on('message', async (msg) => {
                 await bot.deleteMessage(chatId, msg.message_id);
                 console.log(`Message deleted from ${msg.from.username || msg.from.first_name}`);
             }
-        //}
+        }
     } catch (error) {
         console.error('Error:', error);
     }
