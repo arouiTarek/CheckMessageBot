@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const token = '7601448687:AAF2TnvkF--YyjO-3BJdK5vLLbMdEb-dwy0'; // استخدام متغير بيئة
-const url = `https://check-message-bot.vercel.app/api/webhook`; // استخدام Vercel URL
+const url = `https://checkmessagebot.onrender.com/api/webhook`; // استخدام Vercel URL
 
 const bot = new TelegramBot(token);
 const app = express();
@@ -43,6 +43,9 @@ bot.on('message', async (msg) => {
         console.error('Error:', error);
     }
 });
-
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
 // Export the app for Vercel
-module.exports = app;
+//module.exports = app;
