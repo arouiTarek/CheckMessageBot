@@ -25,7 +25,7 @@ const EXCLUDED_USERNAMES = ['GroupAnonymousBot'];
 bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
     const userId = msg.from.id;
-
+    const username = msg.from.username;
     try {
         const chatMember = await bot.getChatMember(chatId, userId);
 
